@@ -14,16 +14,17 @@ export class LoginComponent implements OnInit {
   hide=true;
   user: any;
   errorMessagee:any;
-  constructor(private authService: AuthService,private router:Router) { 
+  constructor(public authService: AuthService,private router:Router) { 
     this.user = {
       name: "",
       email:"",
+      password: "",
       loginSuccess:true
     };
   }
   
   ngOnInit() {}
-  signWithEmail(email,password){
+  signInWithEmail(email,password){
     this.authService
       .signIn(this.user.email, this.user.password)
       .then(()=>{
